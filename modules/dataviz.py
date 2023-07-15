@@ -9,6 +9,10 @@ class MRVDataviz:
         self.data = df
 
     def total_emissions(self): 
+        '''
+        Makes vilin plot by ship type of total emissions.
+        '''
+        
         return self.compile_violinplot(y_col = 'TOTAL CO₂ EMISSIONS [M TONNES]', y_varname = 'tot_emissions')
 
     def between_msports_emissions(self):
