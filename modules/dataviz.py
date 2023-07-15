@@ -12,20 +12,38 @@ class MRVDataviz:
         return self.compile_violinplot(y_col = 'TOTAL CO₂ EMISSIONS [M TONNES]', y_varname = 'tot_emissions')
 
     def between_msports_emissions(self):
+        '''
+        Makes violin plot by ship type of emissions from voyages that betwee MS ports.        
+        '''
+        
         return self.compile_violinplot(y_col = 'CO₂ EMISSIONS FROM ALL VOYAGES BETWEEN PORTS UNDER A MS JURISDICTION [M TONNES]', y_varname = 'tot_emissions_btw_MS_ports', y_trim=100000)
 
     def departed_msports_emissions(self): 
+        '''
+        Makes violin plot by ship type of emissions from voyages that departed from MS ports.
+        '''
+        
         return self.compile_violinplot(y_col = 'CO₂ EMISSIONS FROM ALL VOYAGES WHICH DEPARTED FROM PORTS UNDER A MS JURISDICTION [M TONNES]', y_varname = 'tot_emissions_departed_MS_ports')
         
     def within_msports_emissions(self):
+        '''
+        Makes violin plot by ship type of emissions within MS ports at berth.
+        '''
+        
         return self.compile_violinplot(y_col = 'CO₂ EMISSIONS WHICH OCCURRED WITHIN PORTS UNDER A MS JURISDICTION AT BERTH [M TONNES]', y_varname = 'tot_emissions_within_MS_ports', y_trim=100000)
 
     def annual_ave_emissions_per_distance(self):
+        '''
+        Makes violin plot by ship type of annual average emissions per distance.
+        '''
         
         return self.compile_violinplot(y_col = 'ANNUAL AVERAGE CO₂ EMISSIONS PER DISTANCE [KG CO₂ / N MILE]', y_varname = 'annual_ave_emissions_dist', y_trim=100000)
 
 
     def compile_violinplot(self, y_col, y_varname, y_trim = None):
+        '''
+        Composer method for building violin plots to summarize "SHIP TYPE". 
+        '''
         
         if y_trim is None:
             df_emissions_msports = self.data[['SHIP TYPE', y_col]].copy()
